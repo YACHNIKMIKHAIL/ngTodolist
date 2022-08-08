@@ -1,0 +1,46 @@
+.main {
+  height: 12%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .addCase {
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+
+    input {
+      background-color: #2d3a44;
+      margin-right: 1rem;
+      color: #00adab;
+      padding: 0 .6rem;
+
+      &:focus {
+        background-color: #d6e2ea;
+      }
+      &:hover {
+        background-color: #d6e2ea;
+      }
+    }
+
+    button {
+      padding: 0 .5rem;
+      background-color: #2d3a44;
+      cursor: pointer;
+      color: #00adab;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        background-color: #d6e2ea;
+      }
+    }
+  }
+
+  .allRights {
+    color: rgba(0, 173, 171, 0.77);
+  }
+}
+
