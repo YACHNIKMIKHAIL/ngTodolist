@@ -1,7 +1,5 @@
 <div *ngFor="let ta of tasks |  todolistIdPipe: todolistId " class="task">
-  <div *ngIf="ta.todoListId === todolistId" class="taskCase">
     <input type="checkbox" [checked]="ta.status">
     <span>{{ ta.title }}</span>
     <button>x</button>
-  </div>
 </div>
