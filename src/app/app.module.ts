@@ -4,13 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HeaderComponent} from "./components/header/header.component";
-import { TodolistComponent } from './components/todolist/todolist.component';
+import {TodolistComponent} from "./components/todolist/todolist.component";
+import { TaskComponent } from './components/task/task.component';
+import {TodolistIdPipe} from "./shared/todolistid.pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     TodolistComponent,
+    TaskComponent,
+    TodolistIdPipe
   ],
   imports: [
     BrowserModule,

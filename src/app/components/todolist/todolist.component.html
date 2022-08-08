@@ -2,12 +2,7 @@
     <div class="main" *ngFor="let to of todolists">
       <div class="head">{{to.title}}</div>
       <div class="tasks">
-        vgdhsbjankm
-        vgdhsbjankm
-        vgdhsbjankm
-        vgdhsbjankm
-        vgdhsbjankm
-        vgdhsbjankm
+       <app-task [todolistId]="to.id"></app-task>
       </div>
       <div class="buttons">
         <button>All</button>
