@@ -7,7 +7,9 @@ import {HeaderComponent} from "./components/header/header.component";
 import {TodolistComponent} from "./components/todolist/todolist.component";
 import { TaskComponent } from './components/task/task.component';
 import {TodolistIdPipe} from "./shared/todolistid.pipe";
-import { AddTodolistComponent } from './components/add-todolist/add-todolist.component';
+import {AddTodolistComponent} from "./components/add-todolist/add-todolist.component";
+import { AddTaskComponent } from './components/add-task/add-task.component';
+import {AppCreateTaskComponent} from "./components/add-task/app-create-task/app-create-task.component";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { AddTodolistComponent } from './components/add-todolist/add-todolist.com
     TodolistComponent,
     TaskComponent,
     TodolistIdPipe,
-    AddTodolistComponent
+    AddTodolistComponent,
+    AddTaskComponent,
+    AppCreateTaskComponent
   ],
   imports: [
     BrowserModule,

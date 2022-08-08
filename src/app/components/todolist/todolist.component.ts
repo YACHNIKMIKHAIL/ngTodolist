@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ModalService} from "../../services/modal.service";
 
 export interface ITodolist {
   id: string
@@ -27,11 +28,10 @@ export class TodolistComponent implements OnInit {
 
   ]
 
-  constructor() {
+  constructor(public modalService: ModalService) {
   }
 
   ngOnInit(): void {
-    console.log([...new Set(this.todolists.map(m => m.id))]);
   }
 
 }

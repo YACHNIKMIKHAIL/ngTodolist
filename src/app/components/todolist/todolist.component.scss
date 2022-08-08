@@ -3,7 +3,7 @@
   display: flex;
   overflow-x: scroll;
   align-items: flex-start;
-  padding: .5rem 0 0 0 ;
+  padding: .5rem 0 0 0;
 
   .main {
     color: white;
@@ -23,6 +23,23 @@
       justify-content: center;
       margin: .4rem 0;
       font-size: 2rem;
+      position: relative;
+
+      .add {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        opacity: 0.5;
+        padding: 0 .1rem;
+      }
+
+      .del {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        opacity: 0.5;
+        padding: 0 .1rem;
+      }
     }
 
     .tasks {
@@ -32,15 +49,15 @@
       background-color: rgba(42, 48, 58, 0.78);
     }
 
-    .buttons{
+    .buttons {
       margin: .4rem 0;
       color: #559ba4;
 
-      button{
+      button {
         padding: .2rem .6rem;
         margin: 0 .2rem;
         border-radius: .6rem;
-        background-color: #c5d3d6;
+        background-color: rgba(197, 211, 214, 0.25);
         color: #00adab;
       }
     }

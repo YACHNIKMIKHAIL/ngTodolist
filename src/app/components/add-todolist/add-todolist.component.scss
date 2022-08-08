@@ -18,7 +18,9 @@
 
       &:focus {
         background-color: #d6e2ea;
+        color: #fd21eb;
       }
+
       &:hover {
         background-color: #d6e2ea;
       }
@@ -40,7 +42,11 @@
   }
 
   .allRights {
-    color: rgba(0, 173, 171, 0.77);
+    color: rgba(0, 173, 171, 0.61);
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
   }
 }
 

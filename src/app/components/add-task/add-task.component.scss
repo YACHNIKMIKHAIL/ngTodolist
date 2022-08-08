@@ -1,0 +1,27 @@
+.main {
+  background: rgba(0, 173, 171, 0.28);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  .mainII {
+    width: 500px;
+    //position: absolute;
+    top: 100px;
+    padding: 6px;
+    border-radius: 1rem;
+    background-color: rgba(126, 16, 117, 0.55);
+
+    h1 {
+      text-align: center;
+      margin: 1rem 0;
+      color: rgba(0, 173, 171, 0.82);
+    }
+  }
+}

@@ -2,4 +2,8 @@
   <app-header></app-header>
   <app-todolist></app-todolist>
   <app-add-todolist></app-add-todolist>
+
+  <app-add-task title="Add new task" *ngIf="modalService.isVisible$|async">
+    <app-app-create-task></app-app-create-task>
+  </app-add-task>
 </div>

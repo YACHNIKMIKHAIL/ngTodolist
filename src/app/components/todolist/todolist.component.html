@@ -1,6 +1,10 @@
 <div class="todolists">
     <div class="main" *ngFor="let to of todolists">
-      <div class="head">{{to.title}}</div>
+      <div class="head">
+        {{to.title}}
+        <button class="add" (click)="modalService.open()">+</button>
+        <button class="del">x</button>
+      </div>
       <div class="tasks">
        <app-task [todolistId]="to.id"></app-task>
       </div>
