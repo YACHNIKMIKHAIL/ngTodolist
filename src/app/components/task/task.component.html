@@ -1,4 +1,4 @@
-<div *ngFor="let ta of tasks |  todolistIdPipe: todolistId " class="task">
+<div *ngFor="let ta of taskService.tasks |  todolistIdPipe: todolistId " class="task">
   <input type="checkbox" [checked]="ta.status">
   <span>{{ ta.title }}</span>
   <button>x</button>

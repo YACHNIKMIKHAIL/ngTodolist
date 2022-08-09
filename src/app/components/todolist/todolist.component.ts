@@ -4,14 +4,12 @@ import {TodolistService} from "../../services/todolist.service";
 import {TaskService} from "../../services/task.service";
 
 
-
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
   styleUrls: ['./todolist.component.scss']
 })
 export class TodolistComponent implements OnInit {
-
 
 
   constructor(public modalService: ModalService,
@@ -22,4 +20,8 @@ export class TodolistComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openModal(todolistId: string) {
+    this.taskService.openModal(todolistId)
+    this.modalService.open()
+  }
 }

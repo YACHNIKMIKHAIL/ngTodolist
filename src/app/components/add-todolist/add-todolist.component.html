@@ -2,7 +2,6 @@
   <div class="addCase">
     <input type="text" placeholder="tap new todoname" [(ngModel)]="newTodolistTitle"
            (keyup.enter)="addTodolist()"
-           (blur)="onBlurHandler()"
     >
     <button (click)="addTodolist()">+</button>
   </div>

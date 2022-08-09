@@ -1,4 +1,6 @@
 import {Injectable} from '@angular/core';
+import {Observable} from "rxjs";
+import {TodolistIdPipe} from "../shared/todolistid.pipe";
 
 export enum TaskStatuses {
   New = 0,
@@ -33,6 +35,8 @@ export interface ITask {
   providedIn: 'root'
 })
 export class TaskService {
+  currentId: string = ''
+
   tasks: ITask[] = [
     {
       id: '1',
@@ -57,7 +61,16 @@ export class TaskService {
   constructor() {
   }
 
-  addNewTask(title: string) {
+  openModal(todolistId: string) {
+    this.currentId = todolistId
+  }
 
+  addNewTask(title: string): void {
+    this.tasks = [...this.tasks, {
+      id: (this.tasks.length + 1).toString(),
+      title: title,
+      todoListId: this.currentId,
+      status: false,
+    }]
   }
 }

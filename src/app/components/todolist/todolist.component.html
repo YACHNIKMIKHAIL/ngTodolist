@@ -2,7 +2,7 @@
     <div class="main" *ngFor="let to of todolistService.todolists">
       <div class="head">
         {{to.title}}
-        <button class="add" (click)="modalService.open()">+</button>
+        <button class="add" (click)="openModal(to.id)">+</button>
         <button class="del">x</button>
       </div>
       <div class="tasks">

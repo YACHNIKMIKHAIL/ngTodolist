@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalService} from "../../../services/modal.service";
+import {TaskService} from "../../../services/task.service";
 
 @Component({
   selector: 'app-app-create-task',
@@ -9,7 +10,8 @@ import {ModalService} from "../../../services/modal.service";
 export class AppCreateTaskComponent implements OnInit {
   newTaskTitle: string = ''
 
-  constructor(private modalService: ModalService) {
+  constructor(private modalService: ModalService,
+              private taskService: TaskService) {
   }
 
   ngOnInit(): void {
@@ -17,6 +19,7 @@ export class AppCreateTaskComponent implements OnInit {
 
   addTask() {
     this.modalService.close()
+    this.taskService.addNewTask(this.newTaskTitle)
     console.log(this.newTaskTitle)
   }
 }

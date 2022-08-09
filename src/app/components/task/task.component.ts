@@ -9,11 +9,9 @@ import {ITask, TaskService} from "../../services/task.service";
 })
 export class TaskComponent implements OnInit {
 
-  tasks: ITask[] = []
   @Input() todolistId: string = ''
 
   constructor(public taskService: TaskService) {
-    this.tasks = taskService.tasks
   }
 
   ngOnInit(): void {
