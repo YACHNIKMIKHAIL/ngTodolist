@@ -8,20 +8,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
+.mainII {
+  width: 500px;
+  position: absolute;
+  top: 22rem;
+left: 8rem;
+  padding: 6px;
+  border-radius: 1rem;
+  border: 2px rgba(255, 7, 197, 0.43) solid;
+  background-color: rgba(0, 16, 16, 0.22);
 
-  .mainII {
-    width: 500px;
-    //position: absolute;
-    top: 100px;
-    padding: 6px;
-    border-radius: 1rem;
-    background-color: rgba(42, 48, 58, 0.78);
-
-    h1 {
-      text-align: center;
-      margin: 1rem 0;
-      color: rgba(0, 173, 171, 0.82);
-    }
+  h1 {
+    text-align: center;
+    margin: 1rem 0;
+    color: rgba(0, 173, 171, 0.82);
   }
 }

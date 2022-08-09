@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ModalService} from "../../../services/modal.service";
 
 @Component({
@@ -7,10 +7,16 @@ import {ModalService} from "../../../services/modal.service";
   styleUrls: ['./app-create-task.component.scss']
 })
 export class AppCreateTaskComponent implements OnInit {
+  newTaskTitle: string = ''
 
-  constructor(private modalService: ModalService) { }
+  constructor(private modalService: ModalService) {
+  }
 
   ngOnInit(): void {
   }
 
+  addTask() {
+    this.modalService.close()
+    console.log(this.newTaskTitle)
+  }
 }

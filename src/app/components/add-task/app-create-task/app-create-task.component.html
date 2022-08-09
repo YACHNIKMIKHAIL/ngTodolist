@@ -1,4 +1,4 @@
 <div class="add">
-  <input type="text">
-  <button>Add</button>
+  <input type="text" placeholder="Tap task name ..." [(ngModel)]="newTaskTitle">
+  <button (click)="addTask()">Add</button>
 </div>

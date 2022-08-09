@@ -1,5 +1,5 @@
 import {Pipe} from "@angular/core";
-import {ITask} from "../components/task/task.component";
+import {ITask} from "../services/task.service";
 
 @Pipe({
   name: 'todolistIdPipe'
