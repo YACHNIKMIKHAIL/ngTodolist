@@ -1,9 +1,16 @@
 .main {
   height: 94vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: rgba(98, 137, 151, 0.47);
+
+  .r {
+    color: rgba(118, 151, 162, 0.4);
+    margin-bottom: 2rem;
+    font-size: .4rem;
+  }
 
   .login {
     display: flex;
@@ -14,20 +21,21 @@
     border-radius: 1rem;
     background-color: rgba(14, 0, 0, 0.35);
 
-    .title{
+    .title {
       color: #00adab;
       margin-bottom: 1rem;
     }
 
-    input{
+    input {
       padding: .2rem;
       background-color: #00adab;
       margin-bottom: 1rem;
 
-      &:hover{
+      &:hover {
         background-color: rgba(0, 173, 171, 0.39);
       }
-      &:focus{
+
+      &:focus {
         background-color: rgba(0, 173, 171, 0.39);
 
       }
@@ -39,7 +47,7 @@
       color: white;
       margin: 0 .5rem;
 
-      &:hover{
+      &:hover {
         background-color: rgba(0, 173, 171, 0.39);
       }
     }

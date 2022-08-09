@@ -6,7 +6,7 @@ import {BehaviorSubject} from "rxjs";
 })
 export class ModalService {
 
-  isVisible$ = new BehaviorSubject<boolean>(false)
+  isVisible$ = new BehaviorSubject<boolean>(true)
 
   open() {
     this.isVisible$.next(true)
