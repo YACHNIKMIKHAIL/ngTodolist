@@ -73,4 +73,13 @@ export class TaskService {
       status: false,
     }]
   }
+
+  deleteTask(todolistId: string, taskId: string): void {
+    console.log('this.currentId', this.currentId)
+    console.log(todolistId)
+    console.log(taskId)
+
+    this.tasks = this.tasks.filter(f => f.id !== taskId )
+    console.log(this.tasks)
+  }
 }
