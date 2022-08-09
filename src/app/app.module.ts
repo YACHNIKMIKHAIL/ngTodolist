@@ -11,6 +11,7 @@ import {AddTodolistComponent} from "./components/add-todolist/add-todolist.compo
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import {AppCreateTaskComponent} from "./components/add-task/app-create-task/app-create-task.component";
 import { LoginComponent } from './components/login/login.component';
+import { MainComponent } from './components/main/main.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginComponent } from './components/login/login.component';
     AddTodolistComponent,
     AddTaskComponent,
     AppCreateTaskComponent,
-    LoginComponent
+    LoginComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

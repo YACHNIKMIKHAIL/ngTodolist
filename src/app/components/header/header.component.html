@@ -2,5 +2,9 @@
   <div class="title">
     {{title.toLocaleUpperCase()}}
   </div>
+  <a routerLink="/" [routerLinkActive]="'active-link'"
+     [routerLinkActiveOptions]="{exact:true}"> main</a>
+  <a routerLink="/login" [routerLinkActive]="'active-link'"
+     [routerLinkActiveOptions]="{exact:true}"> login</a>
   <button>logOut</button>
 </div>
