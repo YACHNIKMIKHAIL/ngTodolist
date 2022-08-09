@@ -37,19 +37,30 @@ export class TodolistService {
   }
 
   fetchTodolists() {
-    this.todolists=this.todolists.map(m=>({...m,filter:'all'}))
+    this.todolists = this.todolists.map(m => ({...m, filter: 'all'}))
   }
 
   addNewTodolist(title: string) {
-    this.todolists.push({
-      id: this.todolists[this.todolists.length - 1].id + 1,
-      title: title,
-    })
+    if (this.todolists.length === 0) {
+      this.todolists = []
+      this.todolists.push({
+        id: '1',
+        title: title,
+      })
+    } else {
+      this.todolists.push({
+        id: this.todolists[this.todolists.length - 1].id + 1,
+        title: title,
+      })
+    }
+
   }
 
   deleteTodolist(todolistId: string) {
     this.todolists = this.todolists.filter(f => f.id !== todolistId)
+    console.log(this.todolists)
   }
+
   changeFilter(filter: IFilter, todolistId: string) {
     this.todolists = this.todolists.map(t => t.id === todolistId ? {...t, filter} : t)
   }
