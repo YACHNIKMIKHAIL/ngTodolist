@@ -1,0 +1,47 @@
+.main {
+  height: 93vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(98, 137, 151, 0.47);
+
+  .login {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: rgba(14, 0, 0, 0.35);
+
+    .title{
+      color: #00adab;
+      margin-bottom: 1rem;
+    }
+
+    input{
+      padding: .2rem;
+      background-color: #00adab;
+      margin-bottom: 1rem;
+
+      &:hover{
+        background-color: rgba(0, 173, 171, 0.39);
+      }
+      &:focus{
+        background-color: rgba(0, 173, 171, 0.39);
+
+      }
+    }
+
+    button {
+      padding: .2rem 1rem;
+      background-color: #00adab;
+      color: white;
+      margin: 0 .5rem;
+
+      &:hover{
+        background-color: rgba(0, 173, 171, 0.39);
+      }
+    }
+  }
+}
