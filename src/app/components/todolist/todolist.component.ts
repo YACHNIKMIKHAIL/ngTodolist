@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalService} from "../../services/modal.service";
-import {TodolistService} from "../../services/todolist.service";
+import {ITodolist, TodolistService} from "../../services/todolist.service";
 import {TaskService} from "../../services/task.service";
 
+export type IFilter = 'all' | 'completed' | 'active'
 
 @Component({
   selector: 'app-todolist',
@@ -10,7 +11,7 @@ import {TaskService} from "../../services/task.service";
   styleUrls: ['./todolist.component.scss']
 })
 export class TodolistComponent implements OnInit {
-
+  todolists: ITodolist[] = []
 
   constructor(public modalService: ModalService,
               public todolistService: TodolistService,
@@ -18,6 +19,7 @@ export class TodolistComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.todolistService.fetchTodolists()
   }
 
   openModal(todolistId: string) {
@@ -25,8 +27,12 @@ export class TodolistComponent implements OnInit {
     this.modalService.open()
   }
 
-  deleteTodolist(todolistId:string){
+  deleteTodolist(todolistId: string) {
     this.todolistService.deleteTodolist(todolistId)
     this.taskService.deleteTodolist(todolistId)
+  }
+
+  changeFilter(filter: IFilter, todolistId: string) {
+    this.todolistService.changeFilter(filter, todolistId)
   }
 }

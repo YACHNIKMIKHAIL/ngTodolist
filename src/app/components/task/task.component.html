@@ -1,4 +1,4 @@
-<div *ngFor="let ta of taskService.tasks |  todolistIdPipe: todolistId " class="task">
+<div *ngFor="let ta of taskService.tasks |  todolistIdPipe: todolistId | todolistFilterPipe:currentFilter " class="task">
   <input type="checkbox" [checked]="ta.status">
   <span>{{ ta.title }}</span>
   <button (click)="deleteTask(ta.id)">x</button>

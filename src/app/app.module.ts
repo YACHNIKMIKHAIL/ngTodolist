@@ -14,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import {FormsModule} from "@angular/forms";
+import {TodolistFilterPipe} from "./shared/todolistfilter.pipe";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {FormsModule} from "@angular/forms";
     TodolistComponent,
     TaskComponent,
     TodolistIdPipe,
+    TodolistFilterPipe,
     AddTodolistComponent,
     AddTaskComponent,
     AppCreateTaskComponent,

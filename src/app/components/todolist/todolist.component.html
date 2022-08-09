@@ -1,17 +1,26 @@
 <div class="todolists">
-    <div class="main" *ngFor="let to of todolistService.todolists">
-      <div class="head">
-        {{to.title}}
-        <button class="add" (click)="openModal(to.id)">+</button>
-        <button class="del" (click)="deleteTodolist(to.id)">x</button>
-      </div>
-      <div class="tasks">
-       <app-task [todolistId]="to.id"></app-task>
-      </div>
-      <div class="buttons">
-        <button>All</button>
-        <button>Completed</button>
-        <button>Active</button>
-      </div>
+  <div class="main" *ngFor="let to of todolistService.todolists">
+    <div class="head">
+      {{to.title}}
+      <button class="add" (click)="openModal(to.id)">+</button>
+      <button class="del" (click)="deleteTodolist(to.id)">x</button>
     </div>
+    <div class="tasks">
+      <app-task [todolistId]="to.id"></app-task>
+    </div>
+    <div class="buttons">
+      <button [class.active]="to.filter==='all'"
+              (click)="changeFilter('all',to.id)"
+      >All
+      </button>
+      <button [class.active]="to.filter==='completed'"
+              (click)="changeFilter('completed',to.id)"
+      >Completed
+      </button>
+      <button [class.active]="to.filter==='active'"
+              (click)="changeFilter('active',to.id)"
+      >Active
+      </button>
+    </div>
+  </div>
 </div>

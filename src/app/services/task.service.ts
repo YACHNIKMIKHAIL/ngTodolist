@@ -1,6 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Observable} from "rxjs";
-import {TodolistIdPipe} from "../shared/todolistid.pipe";
 
 export enum TaskStatuses {
   New = 0,
@@ -42,7 +40,7 @@ export class TaskService {
       id: '1',
       title: 'title 1',
       todoListId: '1659959584487',
-      status: false,
+      status: true,
     },
     {
       id: '2',
@@ -52,8 +50,63 @@ export class TaskService {
     },
     {
       id: '3',
-      title: 'title 333',
+      title: 'title 3',
+      todoListId: '1659959584487',
+      status: true,
+    },
+    {
+      id: '4',
+      title: 'title 4',
+      todoListId: '1659959584487',
+      status: true,
+    },
+    {
+      id: '5',
+      title: 'title 5',
       todoListId: '1659959538696',
+      status: false,
+    },
+    {
+      id: '6',
+      title: 'title 6',
+      todoListId: '1659959538696',
+      status: false,
+    },
+    {
+      id: '7',
+      title: 'title 7',
+      todoListId: '1659959584487',
+      status: true
+    },
+    {
+      id: '8',
+      title: 'title 8',
+      todoListId: '1659959538696',
+      status: true,
+    },
+    {
+      id: '9',
+      title: 'title 9',
+      todoListId: '1659959538696',
+      status: false,
+    },
+    {
+      id: '10',
+      title: 'title 10',
+      todoListId: '1659959584488',
+      status: false,
+    },
+
+    {
+      id: '11',
+      title: 'title 11',
+      todoListId: '1659959584488',
+      status: true,
+    },
+    {
+      id: '12',
+      title: 'title 12',
+      todoListId: '1659959538699',
       status: true,
     }
   ]
@@ -75,16 +128,10 @@ export class TaskService {
   }
 
   deleteTask(todolistId: string, taskId: string): void {
-    console.log('this.currentId', this.currentId)
-    console.log(todolistId)
-    console.log(taskId)
-
     this.tasks = this.tasks.filter(f => f.id !== taskId)
-    console.log(this.tasks)
   }
 
   deleteTodolist(todolistId: string) {
     this.tasks = this.tasks.filter(f => f.todoListId !== todolistId)
-    console.log(this.tasks)
   }
 }
