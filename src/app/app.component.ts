@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {ModalService} from "./services/modal.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,9 @@ import {ModalService} from "./services/modal.service";
 export class AppComponent {
   title = 'NG-todolist';
 
-  constructor(public modalService: ModalService) {
+  constructor(public modalService: ModalService,
+              router:Router) {
+    router.navigate(['/login'])
   }
 }
+

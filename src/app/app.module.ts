@@ -12,6 +12,8 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
 import {AppCreateTaskComponent} from "./components/add-task/app-create-task/app-create-task.component";
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,11 +26,13 @@ import { MainComponent } from './components/main/main.component';
     AddTaskComponent,
     AppCreateTaskComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

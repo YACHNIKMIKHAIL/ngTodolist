@@ -3,8 +3,8 @@
     <div class="title">
       {{title}}
     </div>
-    <input type="text" placeholder="eMail">
-    <input type="password" placeholder="password">
-    <button>logIn</button>
+    <input type="text" placeholder="eMail" [(ngModel)]="email">
+    <input type="password" placeholder="password" [(ngModel)]="pass">
+    <button (click)="this.logIn()" >logIn</button>
   </div>
 </div>
