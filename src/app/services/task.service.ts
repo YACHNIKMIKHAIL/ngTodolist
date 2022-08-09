@@ -134,4 +134,8 @@ export class TaskService {
   deleteTodolist(todolistId: string) {
     this.tasks = this.tasks.filter(f => f.todoListId !== todolistId)
   }
+
+  changeStatus(taskId: string, todolistId: string) {
+    this.tasks = this.tasks.map(m => m.id === taskId ? {...m, status: !m.status} : m)
+  }
 }

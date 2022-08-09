@@ -25,4 +25,8 @@ export class TaskComponent implements OnInit {
   deleteTask(taskId: string) {
     this.taskService.deleteTask(this.todolistId, taskId)
   }
+
+  changeStatus(taskId: string, todolistId: string) {
+    this.taskService.changeStatus(taskId, todolistId)
+  }
 }
