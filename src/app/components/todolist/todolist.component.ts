@@ -1,12 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalService} from "../../services/modal.service";
+import {TodolistService} from "../../services/todolist.service";
 
-export interface ITodolist {
-  id: string
-  title: string
-  addedDate?: string
-  order?: number
-}
+
 
 @Component({
   selector: 'app-todolist',
@@ -15,20 +11,10 @@ export interface ITodolist {
 })
 export class TodolistComponent implements OnInit {
 
-  todolists: ITodolist[] = [
-    {
-      id: '1659959584487',
-      title: 'git commit',
-    },
-    {
-      id: '1659959538696',
-      title: 'git push',
-    },
 
 
-  ]
-
-  constructor(public modalService: ModalService) {
+  constructor(public modalService: ModalService,
+              public todolistService: TodolistService) {
   }
 
   ngOnInit(): void {

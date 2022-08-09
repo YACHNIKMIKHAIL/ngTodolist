@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginComponent} from "../login/login.component";
+import {LoginService} from "../../services/login.service";
 
 @Component({
   selector: 'app-header',
@@ -9,10 +9,13 @@ import {LoginComponent} from "../login/login.component";
 export class HeaderComponent implements OnInit {
   title: string = 'NG batman-todolist'
 
-  constructor(public isAuth: LoginComponent) {
+  constructor(private loginService: LoginService) {
   }
 
   ngOnInit(): void {
   }
 
+  logOut() {
+    this.loginService.logOut()
+  }
 }

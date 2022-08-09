@@ -1,5 +1,5 @@
 <div class="todolists">
-    <div class="main" *ngFor="let to of todolists">
+    <div class="main" *ngFor="let to of todolistService.todolists">
       <div class="head">
         {{to.title}}
         <button class="add" (click)="modalService.open()">+</button>

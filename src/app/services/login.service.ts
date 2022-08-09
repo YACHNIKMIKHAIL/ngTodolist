@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 export class LoginService {
   email: string = '123'
   pass: string = '123'
-  isAuth: boolean = false
+  isAuth: boolean = true
 
   constructor(public router: Router) {
   }
@@ -19,5 +19,10 @@ export class LoginService {
     } else {
       alert('Incorrect email or pass !')
     }
+  }
+
+  logOut() {
+    this.isAuth = false
+    this.router.navigate(['/login'])
   }
 }

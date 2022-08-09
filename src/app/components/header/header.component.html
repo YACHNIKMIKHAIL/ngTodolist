@@ -6,5 +6,5 @@
      [routerLinkActiveOptions]="{exact:true}"> main</a>
   <a routerLink="/login" [routerLinkActive]="'active-link'"
      [routerLinkActiveOptions]="{exact:true}"> login</a>
-  <button *ngIf="true">logOut</button>
+  <button *ngIf="true" (click)="logOut()">logOut</button>
 </div>
