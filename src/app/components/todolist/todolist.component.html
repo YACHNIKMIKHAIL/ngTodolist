@@ -3,7 +3,7 @@
       <div class="head">
         {{to.title}}
         <button class="add" (click)="openModal(to.id)">+</button>
-        <button class="del">x</button>
+        <button class="del" (click)="deleteTodolist(to.id)">x</button>
       </div>
       <div class="tasks">
        <app-task [todolistId]="to.id"></app-task>

@@ -24,4 +24,9 @@ export class TodolistComponent implements OnInit {
     this.taskService.openModal(todolistId)
     this.modalService.open()
   }
+
+  deleteTodolist(todolistId:string){
+    this.todolistService.deleteTodolist(todolistId)
+    this.taskService.deleteTodolist(todolistId)
+  }
 }

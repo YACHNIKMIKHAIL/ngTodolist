@@ -79,7 +79,12 @@ export class TaskService {
     console.log(todolistId)
     console.log(taskId)
 
-    this.tasks = this.tasks.filter(f => f.id !== taskId )
+    this.tasks = this.tasks.filter(f => f.id !== taskId)
+    console.log(this.tasks)
+  }
+
+  deleteTodolist(todolistId: string) {
+    this.tasks = this.tasks.filter(f => f.todoListId !== todolistId)
     console.log(this.tasks)
   }
 }

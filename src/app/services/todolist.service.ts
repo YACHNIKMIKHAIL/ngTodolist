@@ -35,4 +35,8 @@ export class TodolistService {
       title: title,
     })
   }
+
+  deleteTodolist(todolistId: string) {
+    this.todolists = this.todolists.filter(f => f.id !== todolistId)
+  }
 }
