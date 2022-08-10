@@ -1,17 +1,19 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Directive, ElementRef, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-edit-text',
   templateUrl: './edit-text.component.html',
   styleUrls: ['./edit-text.component.scss']
 })
+
+
 export class EditTextComponent implements OnInit {
-  textX: string = 'cergvwragva'
+  textX: string = ''
   @Input() text: string | undefined
+  @Input() isTodolist: boolean = false
   isVisible: boolean = false
 
   constructor() {
-
   }
 
   ngOnInit(): void {
@@ -23,6 +25,7 @@ export class EditTextComponent implements OnInit {
   }
 
   close() {
+    this.text = this.textX
     this.isVisible = false
   }
 
