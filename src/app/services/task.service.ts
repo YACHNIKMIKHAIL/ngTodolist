@@ -86,7 +86,15 @@ export class TaskService {
     this.tasks[this.currentId].unshift(task)
   }
 
-  deleteTask(todolistId: string, taskId: string): void {
+  deleteTask(todolistId: string, taskId: string): Observable<ResponseType> {
+    return this.http.delete<ResponseType<{ item: ITask }>>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}/tasks/${taskId}`,  {
+      withCredentials: true,
+      headers: {
+        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
+      }
+    })
+  }
+  deleteOne(todolistId: string, taskId: string) {
     this.tasks[todolistId] = this.tasks[todolistId].filter(f => f.id !== taskId)
   }
 

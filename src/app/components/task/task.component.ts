@@ -28,7 +28,10 @@ export class TaskComponent implements OnInit {
   }
 
   deleteTask(taskId: string) {
-    this.taskService.deleteTask(this.todolistId, taskId)
+    this.taskService.deleteTask(this.todolistId, taskId).subscribe(res => {
+      res.messages.length === 0 && this.taskService.deleteOne(this.todolistId, taskId)
+      console.log(res)
+    })
   }
 
   changeStatus(taskId: string, todolistId: string) {
