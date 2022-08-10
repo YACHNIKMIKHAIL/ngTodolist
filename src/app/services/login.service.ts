@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 export class LoginService {
   email: string = '123'
   pass: string = '123'
-  isAuth: boolean = false
+  isAuth: boolean = true
 
   constructor(public router: Router) {
   }

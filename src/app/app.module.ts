@@ -15,6 +15,7 @@ import { MainComponent } from './components/main/main.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import {FormsModule} from "@angular/forms";
 import {TodolistFilterPipe} from "./shared/todolistfilter.pipe";
+import { EditTextComponent } from './components/edit-text/edit-text.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {TodolistFilterPipe} from "./shared/todolistfilter.pipe";
     AppCreateTaskComponent,
     LoginComponent,
     MainComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    EditTextComponent
   ],
   imports: [
     BrowserModule,
