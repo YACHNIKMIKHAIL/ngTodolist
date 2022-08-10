@@ -22,6 +22,12 @@ export class LoginComponent implements OnInit {
   }
 
   logIn() {
-    this.loginService.logIn(this.email, this.pass)
+    this.loginService.logIn({
+      email: this.email,
+      password: this.pass,
+      rememberMe: true
+    }).subscribe(res => {
+      !!res.data.userId && this.loginService.isAuthFunc(true, res.data.userId.toString())
+    })
   }
 }

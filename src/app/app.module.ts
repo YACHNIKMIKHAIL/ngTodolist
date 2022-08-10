@@ -17,6 +17,7 @@ import {FormsModule} from "@angular/forms";
 import {TodolistFilterPipe} from "./shared/todolistfilter.pipe";
 import { EditTextComponent } from './components/edit-text/edit-text.component';
 import {HttpClientModule} from "@angular/common/http";
+import {TitlePipe} from "./shared/title.pipe";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {HttpClientModule} from "@angular/common/http";
     LoginComponent,
     MainComponent,
     NotFoundComponent,
-    EditTextComponent
+    EditTextComponent,
+    TitlePipe
   ],
   imports: [
     BrowserModule,

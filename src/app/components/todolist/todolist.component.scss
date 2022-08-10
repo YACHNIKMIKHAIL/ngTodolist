@@ -21,14 +21,24 @@
       width: 20rem;
       display: flex;
       justify-content: center;
+      align-items: center;
       margin: .4rem 0;
-      font-size: 2rem;
       position: relative;
+
+      .gradient-text {
+        font-size: .6rem;
+
+        background-color: #fd21eb;
+        background-image: linear-gradient(85deg, rgb(0, 173, 171), rgba(253, 33, 235, 0.41));
+        background-size: 100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
       .add {
         position: absolute;
         right: 1rem;
-        top: 1rem;
+        top: .2rem;
         opacity: 0.5;
         padding: 0 .1rem;
       }
@@ -36,7 +46,7 @@
       .del {
         position: absolute;
         left: 1rem;
-        top: 1rem;
+        top: .2rem;
         opacity: 0.5;
         padding: 0 .1rem;
       }

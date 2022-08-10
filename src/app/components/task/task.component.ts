@@ -22,7 +22,6 @@ export class TaskComponent implements OnInit {
     this.taskService.fetchTasks(this.todolistId)
       .subscribe(res => {
         this.taskService.setTasks(this.todolistId, res.items)
-        console.log(res)
       })
     this.currentFilter = this.todolistService.todolists.filter(f => f.id === this.todolistId)[0].filter
   }
@@ -30,16 +29,13 @@ export class TaskComponent implements OnInit {
   deleteTask(taskId: string) {
     this.taskService.deleteTask(this.todolistId, taskId).subscribe(res => {
       res.messages.length === 0 && this.taskService.deleteOne(this.todolistId, taskId)
-      console.log(res)
     })
   }
 
   changeStatus(taskId: string, todolistId: string, event: any) {
-    console.log(event.target.checked)
-    // this.taskService.changeStatus(taskId, todolistId)
-    this.taskService.changeTask(todolistId, taskId, true)
+     this.taskService.changeTask(todolistId, taskId, event.target.checked)
       .subscribe(res => {
-        res.messages.length === 0 && this.taskService.changeOne(todolistId, taskId,event.target.checked)
+        res.messages.length === 0 && this.taskService.changeOne(todolistId, taskId, event.target.checked)
       })
   }
 }

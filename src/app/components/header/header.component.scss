@@ -5,7 +5,13 @@
   width: 100%;
   background-color: rgba(98, 137, 151, 0.47);
 
-
+  .gradient-text {
+    background-color: #fd21eb;
+    background-image: linear-gradient(25deg, #fcfaec, #628997);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
   .title{
     color: #fbfafc;
     margin: 0 auto;

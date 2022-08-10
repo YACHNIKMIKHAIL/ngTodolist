@@ -9,7 +9,7 @@ import {LoginService} from "./services/login.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'NG-todolist';
+  // title = 'NG-todolist';
   router: Router = {} as Router
   isInitialized: boolean = false
 
@@ -21,15 +21,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginService.authMe().subscribe(res => {
-      console.log(res)
       this.isInitialized = true
+      res.messages.length === 0
+        ? this.loginService.isAuthFunc(true, res.data.login)
+        : this.loginService.isAuthFunc(false)
     })
-
-    if (this.loginService.isAuth) {
-      this.router.navigate(['/'])
-    } else {
-      this.router.navigate(['/login'])
-    }
   }
 
 }

@@ -18,14 +18,14 @@
 
 .isText {
   color: rgba(232, 236, 238, 0.67);
-  font-size: 2rem;
+  font-size: 1.3rem;
 }
 
 .isInput {
   text-align: center;
   font-size: 1rem;
   padding: .1rem;
-  background-color: #00adab;
+  background-color: rgba(0, 173, 171, 0.09);
 
   &:hover {
     background-color: rgba(0, 173, 171, 0.39);
@@ -35,4 +35,9 @@
     background-color: rgba(0, 173, 171, 0.39);
 
   }
+}
+
+.isDone {
+  text-decoration: line-through;
+  color: white;
 }

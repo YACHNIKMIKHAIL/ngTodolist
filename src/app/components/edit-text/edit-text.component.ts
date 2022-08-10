@@ -35,12 +35,10 @@ export class EditTextComponent implements OnInit {
       .subscribe(res => {
         res.messages.length === 0 && this.todolistService.changeOne(this.textX, this.todolistId)
       })
-    // if (this.taskId) this.taskService.changeTaskTitle(this.textX, this.todolistId, this.taskId)
 
     if (this.taskId) this.taskService.changeTask(this.todolistId, this.taskId, this.textX)
       .subscribe(res => {
         res.messages.length === 0 && this.taskService.changeOne(this.todolistId, this.taskId, this.textX)
-        console.log(res)
       })
   }
 

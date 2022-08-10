@@ -82,12 +82,6 @@ export class TaskService {
         "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
       }
     })
-    // this.tasks[this.currentId].push({
-    //   id: Date.now().toString(),
-    //   title: title,
-    //   todoListId: this.currentId,
-    //   status: false,
-    // })
   }
 
   addOne(task: ITask) {
@@ -109,14 +103,6 @@ export class TaskService {
 
   deleteTodolist(todolistId: string) {
     delete this.tasks[todolistId]
-  }
-
-  changeStatus(taskId: string, todolistId: string) {
-    this.tasks[todolistId] = this.tasks[todolistId].map(m => m.id === taskId ? {...m, status: !m.status} : m)
-  }
-
-  changeTaskTitle(title: string, todolistId: string, taskId: string) {
-    this.tasks[todolistId] = this.tasks[todolistId].map(t => t.id === taskId ? {...t, title} : t)
   }
 
   changeTask(todolistID: string, taskID: string, mode: string | boolean): Observable<ResponseType<{ item: ITask }>> {
