@@ -19,6 +19,11 @@ export class TaskComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.taskService.fetchTasks(this.todolistId)
+      .subscribe(res => {
+        this.taskService.setTasks(this.todolistId, res.items)
+        console.log(res)
+      })
     this.currentFilter = this.todolistService.todolists.filter(f => f.id === this.todolistId)[0].filter
   }
 

@@ -20,7 +20,7 @@ export class AddTodolistComponent implements OnInit {
   }
 
   addTodolist() {
-    this.todolistService.addNewTodolist(this.newTodolistTitle)
+    this.todolistService.addNewTodolist(this.newTodolistTitle).subscribe(res => this.todolistService.addNew(res.data.item))
   }
 
   onBlurHandler() {
