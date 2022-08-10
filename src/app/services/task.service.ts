@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {ResponseType} from "./todolist.service";
 
 export enum TaskStatuses {
   New = 0,
@@ -44,94 +45,7 @@ export type ApiTaskType = {
 export class TaskService {
   currentId: string = ''
 
-  tasks: TasksStateType =
-    {
-      // ['1659959584487']: [
-      //   {
-      //     id: '1',
-      //     title: 'title 1',
-      //     todoListId: '1659959584487',
-      //     status: true,
-      //   },
-      //   {
-      //     id: '2',
-      //     title: 'title 2',
-      //     todoListId: '1659959584487',
-      //     status: false,
-      //   },
-      //   {
-      //     id: '3',
-      //     title: 'title 3',
-      //     todoListId: '1659959584487',
-      //     status: true,
-      //   },
-      //   {
-      //     id: '4',
-      //     title: 'title 4',
-      //     todoListId: '1659959584487',
-      //     status: true,
-      //   },
-      //   {
-      //     id: '7',
-      //     title: 'title 7',
-      //     todoListId: '1659959584487',
-      //     status: true
-      //   }
-      // ],
-      //
-      // ['1659959538696']: [
-      //   {
-      //     id: '5',
-      //     title: 'title 5',
-      //     todoListId: '1659959538696',
-      //     status: false,
-      //   },
-      //   {
-      //     id: '6',
-      //     title: 'title 6',
-      //     todoListId: '1659959538696',
-      //     status: false,
-      //   },
-      //   {
-      //     id: '8',
-      //     title: 'title 8',
-      //     todoListId: '1659959538696',
-      //     status: true,
-      //   },
-      //   {
-      //     id: '9',
-      //     title: 'title 9',
-      //     todoListId: '1659959538696',
-      //     status: false,
-      //   }
-      // ]
-      // ,
-      // ['1659959584488']: [
-      //   {
-      //     id: '10',
-      //     title: 'title 10',
-      //     todoListId: '1659959584488',
-      //     status: false,
-      //   },
-      //
-      //   {
-      //     id: '11',
-      //     title: 'title 11',
-      //     todoListId: '1659959584488',
-      //     status: true,
-      //   }
-      // ]
-      // ,
-      // ['1659959538699']: [
-      //   {
-      //     id: '12',
-      //     title: 'title 12',
-      //     todoListId: '1659959538699',
-      //     status: true,
-      //   }
-      // ]
-    }
-
+  tasks: TasksStateType = {}
 
   constructor(private http: HttpClient) {
   }
@@ -153,13 +67,23 @@ export class TaskService {
     this.currentId = todolistId
   }
 
-  addNewTask(title: string): void {
-    this.tasks[this.currentId].push({
-      id: Date.now().toString(),
-      title: title,
-      todoListId: this.currentId,
-      status: false,
+  addNewTask(title: string): Observable<ResponseType<{ item: ITask }>> {
+    return this.http.post<ResponseType<{ item: ITask }>>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${this.currentId}/tasks`, {title}, {
+      withCredentials: true,
+      headers: {
+        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
+      }
     })
+    // this.tasks[this.currentId].push({
+    //   id: Date.now().toString(),
+    //   title: title,
+    //   todoListId: this.currentId,
+    //   status: false,
+    // })
+  }
+
+  addOne(task: ITask) {
+    this.tasks[this.currentId].unshift(task)
   }
 
   deleteTask(todolistId: string, taskId: string): void {

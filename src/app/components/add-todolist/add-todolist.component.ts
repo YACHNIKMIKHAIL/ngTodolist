@@ -20,12 +20,9 @@ export class AddTodolistComponent implements OnInit {
   }
 
   addTodolist() {
-    this.todolistService.addNewTodolist(this.newTodolistTitle).subscribe(res => this.todolistService.addNew(res.data.item))
-  }
-
-  onBlurHandler() {
-    if (this.newTodolistTitle.trim() === '') return
-    alert(`You lose ${this.newTodolistTitle}`)
+    this.todolistService.addNewTodolist(this.newTodolistTitle)
+      .subscribe(res => this.todolistService.addNew(res.data.item))
     this.newTodolistTitle = ''
   }
+
 }

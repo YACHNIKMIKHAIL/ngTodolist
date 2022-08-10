@@ -19,6 +19,9 @@ export class AppCreateTaskComponent implements OnInit {
 
   addTask() {
     this.modalService.close()
-    this.taskService.addNewTask(this.newTaskTitle)
+    this.taskService.addNewTask(this.newTaskTitle).subscribe(res => {
+      this.taskService.addOne(res.data.item)
+      console.log(res)
+    })
   }
 }

@@ -36,24 +36,7 @@ export type ResponseType<D = {}> = {
   providedIn: 'root'
 })
 export class TodolistService {
-  todolists: ITodolist[] = [
-    // {
-    //   id: '1659959584487',
-    //   title: 'git add',
-    // },
-    // {
-    //   id: '1659959538696',
-    //   title: 'git commit',
-    // },
-    // {
-    //   id: '1659959584488',
-    //   title: 'git push',
-    // },
-    // {
-    //   id: '1659959538699',
-    //   title: 'git merge',
-    // },
-  ]
+  todolists: ITodolist[] = []
 
   constructor(
     private http: HttpClient) {
@@ -73,18 +56,6 @@ export class TodolistService {
   }
 
   addNewTodolist(title: string): Observable<PostTodolistType> {
-    // if (this.todolists.length === 0) {
-    //   this.todolists = []
-    //   this.todolists.push({
-    //     id: '1',
-    //     title: title,
-    //   })
-    // } else {
-    //   this.todolists.push({
-    //     id: this.todolists[this.todolists.length - 1].id + 1,
-    //     title: title,
-    //   })
-    // }
     return this.http.post<PostTodolistType>(`https://social-network.samuraijs.com/api/1.1/todo-lists`, {title}, {
       withCredentials: true,
       headers: {

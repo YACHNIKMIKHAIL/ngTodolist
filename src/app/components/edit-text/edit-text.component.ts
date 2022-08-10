@@ -34,7 +34,6 @@ export class EditTextComponent implements OnInit {
     if (this.isTodolist) this.todolistService.changeTodolistTitle(this.textX, this.todolistId)
       .subscribe(res=> {
         res.messages.length===0&&this.todolistService.changeOne(this.textX, this.todolistId)
-        console.log(res)
       })
     if (this.taskId) this.taskService.changeTaskTitle(this.textX, this.todolistId, this.taskId)
   }
