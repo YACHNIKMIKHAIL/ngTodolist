@@ -155,6 +155,6 @@ export class TaskService {
   }
 
   changeTaskTitle(title: string, todolistId: string, taskId: string) {
-    this.tasks = this.tasks.map(t => t.id === taskId ? {...t, title} : t)
+    this.tasks[todolistId] = this.tasks[todolistId].map(t => t.id === taskId ? {...t, title} : t)
   }
 }
