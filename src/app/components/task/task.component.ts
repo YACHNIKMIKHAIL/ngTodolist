@@ -34,7 +34,12 @@ export class TaskComponent implements OnInit {
     })
   }
 
-  changeStatus(taskId: string, todolistId: string) {
-    this.taskService.changeStatus(taskId, todolistId)
+  changeStatus(taskId: string, todolistId: string, event: any) {
+    console.log(event.target.checked)
+    // this.taskService.changeStatus(taskId, todolistId)
+    this.taskService.changeTask(todolistId, taskId, true)
+      .subscribe(res => {
+        res.messages.length === 0 && this.taskService.changeOne(todolistId, taskId,event.target.checked)
+      })
   }
 }

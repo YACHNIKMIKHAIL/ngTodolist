@@ -38,6 +38,14 @@ export type ApiTaskType = {
   totalCount: number
   error: string | null
 }
+export type UpdateTaskType = {
+  title: string
+  description: string
+  status: TaskStatuses
+  priority: TaskPriorities
+  startDate: string
+  deadline: string
+}
 
 @Injectable({
   providedIn: 'root'
@@ -87,13 +95,14 @@ export class TaskService {
   }
 
   deleteTask(todolistId: string, taskId: string): Observable<ResponseType> {
-    return this.http.delete<ResponseType<{ item: ITask }>>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}/tasks/${taskId}`,  {
+    return this.http.delete<ResponseType<{ item: ITask }>>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}/tasks/${taskId}`, {
       withCredentials: true,
       headers: {
         "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
       }
     })
   }
+
   deleteOne(todolistId: string, taskId: string) {
     this.tasks[todolistId] = this.tasks[todolistId].filter(f => f.id !== taskId)
   }
@@ -108,5 +117,28 @@ export class TaskService {
 
   changeTaskTitle(title: string, todolistId: string, taskId: string) {
     this.tasks[todolistId] = this.tasks[todolistId].map(t => t.id === taskId ? {...t, title} : t)
+  }
+
+  changeTask(todolistID: string, taskID: string, mode: string | boolean): Observable<ResponseType<{ item: ITask }>> {
+    const model = this.tasks[todolistID].filter(t => t.id === taskID)[0]
+    typeof mode === 'string'
+      ? model.title = mode
+      : mode
+        ? model.status = TaskStatuses.Complited
+        : model.status = TaskStatuses.New
+    return this.http.put<ResponseType<{ item: ITask }>>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistID}/tasks/${taskID}`, model, {
+      withCredentials: true,
+      headers: {
+        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
+      }
+    })
+  }
+
+  changeOne(todolistID: string, taskID: string | undefined, mode: string | boolean) {
+    this.tasks[todolistID] = this.tasks[todolistID].map(m => m.id === taskID
+      ? typeof mode === 'string'
+        ? {...m, title: mode}
+        : {...m, status: mode}
+      : m)
   }
 }
