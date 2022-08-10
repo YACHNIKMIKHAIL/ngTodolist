@@ -64,4 +64,8 @@ export class TodolistService {
   changeFilter(filter: IFilter, todolistId: string) {
     this.todolists = this.todolists.map(t => t.id === todolistId ? {...t, filter} : t)
   }
+
+  changeTodolistTitle(title: string, todolistId: string) {
+    this.todolists = this.todolists.map(t => t.id === todolistId ? {...t, title} : t)
+  }
 }

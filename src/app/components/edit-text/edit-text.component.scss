@@ -3,10 +3,36 @@
 }
 
 .input {
-  border: 2px white solid;
-  width: 10rem;
+  text-align: center;
+
+  background-color: #2d3a44;
+  margin-right: 1rem;
+  color: #1c8a87;
+  padding: .2rem .6rem;
+
+  &:focus {
+    background-color: #d6e2ea;
+    color: #fd21eb;
+  }
 }
-.is{
-  color:rgba(232, 236, 238, 0.67);
+
+.isText {
+  color: rgba(232, 236, 238, 0.67);
   font-size: 2rem;
+}
+
+.isInput {
+  text-align: center;
+  font-size: 1rem;
+  padding: .1rem;
+  background-color: #00adab;
+
+  &:hover {
+    background-color: rgba(0, 173, 171, 0.39);
+  }
+
+  &:focus {
+    background-color: rgba(0, 173, 171, 0.39);
+
+  }
 }

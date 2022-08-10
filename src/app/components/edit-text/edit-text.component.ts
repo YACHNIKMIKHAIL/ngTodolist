@@ -1,4 +1,6 @@
-import {Component, Directive, ElementRef, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {TodolistService} from "../../services/todolist.service";
+import {TaskService} from "../../services/task.service";
 
 @Component({
   selector: 'app-edit-text',
@@ -11,9 +13,12 @@ export class EditTextComponent implements OnInit {
   textX: string = ''
   @Input() text: string | undefined
   @Input() isTodolist: boolean = false
+  @Input() todolistId: string = ''
+  @Input() taskId: string | undefined
   isVisible: boolean = false
 
-  constructor() {
+  constructor(private todolistService: TodolistService,
+              private taskService: TaskService) {
   }
 
   ngOnInit(): void {
@@ -25,8 +30,9 @@ export class EditTextComponent implements OnInit {
   }
 
   close() {
-    this.text = this.textX
     this.isVisible = false
+    if (this.isTodolist) this.todolistService.changeTodolistTitle(this.textX, this.todolistId)
+    if (this.taskId) this.taskService.changeTaskTitle(this.textX, this.todolistId, this.taskId)
   }
 
 }

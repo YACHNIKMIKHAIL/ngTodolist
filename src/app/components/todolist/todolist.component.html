@@ -1,7 +1,7 @@
 <div class="todolists">
   <div class="main" *ngFor="let to of todolistService.todolists">
     <div class="head">
-      {{to.title}}
+      <app-edit-text text={{to.title}} [isTodolist]="true" todolistId={{to.id}}></app-edit-text>
       <button class="add" (click)="openModal(to.id)">+</button>
       <button class="del" (click)="deleteTodolist(to.id)">x</button>
     </div>
