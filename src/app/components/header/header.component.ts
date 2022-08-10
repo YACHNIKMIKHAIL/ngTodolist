@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {LoginService} from "../../services/login.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,8 @@ import {LoginService} from "../../services/login.service";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  title: string = 'NG batman-todolist'
+  @Input() name: string = 'todolist'
+  title: string = `NG batman-${this.name}`
 
   constructor(public loginService: LoginService) {
   }
