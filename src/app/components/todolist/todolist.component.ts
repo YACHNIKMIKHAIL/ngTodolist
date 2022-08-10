@@ -19,7 +19,9 @@ export class TodolistComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.todolistService.fetchTodolists()
+    this.todolistService.fetchTodolists().subscribe(res => {
+      this.todolistService.setTodolists(res)
+    })
   }
 
   openModal(todolistId: string) {

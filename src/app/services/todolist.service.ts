@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {IFilter} from "../components/todolist/todolist.component";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 export interface ITodolist {
   id: string
@@ -32,12 +34,20 @@ export class TodolistService {
     },
   ]
 
-  constructor() {
-
+  constructor(
+    private http: HttpClient) {
   }
 
-  fetchTodolists() {
-    this.todolists = this.todolists.map(m => ({...m, filter: 'all'}))
+  setTodolists(todolists:ITodolist[]) {
+    this.todolists = todolists.map(m => ({...m, filter: 'all'}))
+  }
+  fetchTodolists(): Observable<ITodolist[]> {
+    return this.http.get<ITodolist[]>(`https://social-network.samuraijs.com/api/1.1/todo-lists`, {
+      withCredentials: true,
+      headers: {
+        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
+      }
+    })
   }
 
   addNewTodolist(title: string) {
