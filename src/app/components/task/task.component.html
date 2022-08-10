@@ -1,4 +1,4 @@
-<div *ngFor="let ta of taskService.tasks |  todolistIdPipe: todolistId | todolistFilterPipe:currentFilter "
+<div *ngFor="let ta of taskService.tasks[todolistId] | todolistFilterPipe:currentFilter "
      class="task">
   <input type="checkbox" [checked]="ta.status" (change)="changeStatus(ta.id,ta.todoListId)">
   <app-edit-text text={{ta.title}} [isTodolist]="false" todolistId={{ta.todoListId}} taskId={{ta.id}}></app-edit-text>

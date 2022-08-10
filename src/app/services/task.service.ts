@@ -29,87 +29,102 @@ export interface ITask {
   loading?: boolean
 }
 
+export type TasksStateType = { [key: string]: ITask[] }
+
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
   currentId: string = ''
 
-  tasks: ITask[] = [
+  tasks: TasksStateType =
     {
-      id: '1',
-      title: 'title 1',
-      todoListId: '1659959584487',
-      status: true,
-    },
-    {
-      id: '2',
-      title: 'title 2',
-      todoListId: '1659959584487',
-      status: false,
-    },
-    {
-      id: '3',
-      title: 'title 3',
-      todoListId: '1659959584487',
-      status: true,
-    },
-    {
-      id: '4',
-      title: 'title 4',
-      todoListId: '1659959584487',
-      status: true,
-    },
-    {
-      id: '5',
-      title: 'title 5',
-      todoListId: '1659959538696',
-      status: false,
-    },
-    {
-      id: '6',
-      title: 'title 6',
-      todoListId: '1659959538696',
-      status: false,
-    },
-    {
-      id: '7',
-      title: 'title 7',
-      todoListId: '1659959584487',
-      status: true
-    },
-    {
-      id: '8',
-      title: 'title 8',
-      todoListId: '1659959538696',
-      status: true,
-    },
-    {
-      id: '9',
-      title: 'title 9',
-      todoListId: '1659959538696',
-      status: false,
-    },
-    {
-      id: '10',
-      title: 'title 10',
-      todoListId: '1659959584488',
-      status: false,
-    },
+      ['1659959584487']: [
+        {
+          id: '1',
+          title: 'title 1',
+          todoListId: '1659959584487',
+          status: true,
+        },
+        {
+          id: '2',
+          title: 'title 2',
+          todoListId: '1659959584487',
+          status: false,
+        },
+        {
+          id: '3',
+          title: 'title 3',
+          todoListId: '1659959584487',
+          status: true,
+        },
+        {
+          id: '4',
+          title: 'title 4',
+          todoListId: '1659959584487',
+          status: true,
+        },
+        {
+          id: '7',
+          title: 'title 7',
+          todoListId: '1659959584487',
+          status: true
+        }
+      ],
 
-    {
-      id: '11',
-      title: 'title 11',
-      todoListId: '1659959584488',
-      status: true,
-    },
-    {
-      id: '12',
-      title: 'title 12',
-      todoListId: '1659959538699',
-      status: true,
+      ['1659959538696']: [
+        {
+          id: '5',
+          title: 'title 5',
+          todoListId: '1659959538696',
+          status: false,
+        },
+        {
+          id: '6',
+          title: 'title 6',
+          todoListId: '1659959538696',
+          status: false,
+        },
+        {
+          id: '8',
+          title: 'title 8',
+          todoListId: '1659959538696',
+          status: true,
+        },
+        {
+          id: '9',
+          title: 'title 9',
+          todoListId: '1659959538696',
+          status: false,
+        }
+      ]
+      ,
+      ['1659959584488']: [
+        {
+          id: '10',
+          title: 'title 10',
+          todoListId: '1659959584488',
+          status: false,
+        },
+
+        {
+          id: '11',
+          title: 'title 11',
+          todoListId: '1659959584488',
+          status: true,
+        }
+      ]
+      ,
+      ['1659959538699']: [
+        {
+          id: '12',
+          title: 'title 12',
+          todoListId: '1659959538699',
+          status: true,
+        }
+      ]
     }
-  ]
+
 
   constructor() {
   }
@@ -119,24 +134,24 @@ export class TaskService {
   }
 
   addNewTask(title: string): void {
-    this.tasks = [...this.tasks, {
-      id: (this.tasks.length + 1).toString(),
+    this.tasks[this.currentId].push({
+      id: Date.now().toString(),
       title: title,
       todoListId: this.currentId,
       status: false,
-    }]
+    })
   }
 
   deleteTask(todolistId: string, taskId: string): void {
-    this.tasks = this.tasks.filter(f => f.id !== taskId)
+    this.tasks[todolistId] = this.tasks[todolistId].filter(f => f.id !== taskId)
   }
 
   deleteTodolist(todolistId: string) {
-    this.tasks = this.tasks.filter(f => f.todoListId !== todolistId)
+    delete this.tasks[todolistId]
   }
 
   changeStatus(taskId: string, todolistId: string) {
-    this.tasks = this.tasks.map(m => m.id === taskId ? {...m, status: !m.status} : m)
+    this.tasks[todolistId] = this.tasks[todolistId].map(m => m.id === taskId ? {...m, status: !m.status} : m)
   }
 
   changeTaskTitle(title: string, todolistId: string, taskId: string) {
