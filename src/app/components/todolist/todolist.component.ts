@@ -30,8 +30,10 @@ export class TodolistComponent implements OnInit {
   }
 
   deleteTodolist(todolistId: string) {
-    this.todolistService.deleteTodolist(todolistId)
-    this.taskService.deleteTodolist(todolistId)
+    this.todolistService.deleteTodolist(todolistId).subscribe(res => {
+      res.messages.length === 0 && this.taskService.deleteTodolist(todolistId)
+    })
+
   }
 
   changeFilter(filter: IFilter, todolistId: string) {
