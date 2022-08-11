@@ -62,6 +62,7 @@ export class TaskService {
   }
 
   changeOne(todolistID: string, taskID: string | undefined, mode: string | boolean) {
+    console.log('changeOne',mode)
     this.tasks[todolistID] = this.tasks[todolistID].map(m => m.id === taskID
       ? typeof mode === 'string'
         ? {...m, title: mode}

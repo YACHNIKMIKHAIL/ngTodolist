@@ -1,2 +1,5 @@
-<span *ngIf="!isVisible" class="text"  (dblclick)="open()" [class.isText]="isTodolist">{{text}}</span>
-<input *ngIf="isVisible" class="input" type="text" (blur)="close()" [class.isInput]="isTodolist" [(ngModel)]="textX" autofocus>
+<span *ngIf="!isVisible" class="text" (dblclick)="open()" [class.isText]="isTodolist"
+      [class.isDone]="isDone"
+>{{text}}</span>
+<input *ngIf="isVisible" class="input" type="text" (blur)="close()" [class.isInput]="isTodolist" [(ngModel)]="textX"
+       autofocus>
