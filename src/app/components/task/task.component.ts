@@ -33,7 +33,6 @@ export class TaskComponent implements OnInit {
   }
 
   changeStatus(taskId: string, todolistId: string, event: any) {
-    console.log('changeStatus',event.target.checked)
     this.taskService.changeTask(todolistId, taskId, event.target.checked)
       .subscribe(res => {
         res.messages.length === 0 && this.taskService.changeOne(todolistId, taskId, event.target.checked)

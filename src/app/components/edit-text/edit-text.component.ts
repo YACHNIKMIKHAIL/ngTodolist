@@ -27,8 +27,6 @@ export class EditTextComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.text) this.textX = this.text
-    console.log('ngOnInit', this.isDone)
-    console.log(this.task.title, this.task.status === 2)
   }
 
   open() {
