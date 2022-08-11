@@ -1,0 +1,7 @@
+{
+  "/api/*": {
+    "target": "https://ng-app-todo.herokuapp.com/",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}
