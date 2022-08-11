@@ -30,7 +30,7 @@ export class TodolistService {
   }
 
   addNew(todolist: ITodolist) {
-    this.todolists.unshift(todolist)
+    this.todolists.unshift({...todolist, filter: 'all'})
   }
 
   deleteTodolist(todolistId: string) {

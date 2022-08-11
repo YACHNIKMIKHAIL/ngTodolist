@@ -2,6 +2,5 @@
   <div class="title gradient-text">
     {{title.toLocaleUpperCase() |titlePipe:this.loginService.login }}
   </div>
-
   <button *ngIf="loginService.isAuth" (click)="logOut()">logOut</button>
 </div>
