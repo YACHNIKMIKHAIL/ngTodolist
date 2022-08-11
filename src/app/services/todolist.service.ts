@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {IFilter} from "../components/todolist/todolist.component";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {FielErrorType} from "./login.service";
+import {FielErrorType} from "./samurai.service";
 
 export interface ITodolist {
   id: string
