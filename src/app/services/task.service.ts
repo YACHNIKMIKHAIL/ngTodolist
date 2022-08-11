@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ResponseType} from "./todolist.service";
+import {SamuraiServiceTasks, UpdateTaskType} from "./samurai-service-log-auth.service";
 
 export enum TaskStatuses {
   New = 0,
@@ -38,14 +39,7 @@ export type ApiTaskType = {
   totalCount: number
   error: string | null
 }
-export type UpdateTaskType = {
-  title: string
-  description: string
-  status: TaskStatuses
-  priority: TaskPriorities
-  startDate: string
-  deadline: string
-}
+
 
 @Injectable({
   providedIn: 'root'
@@ -55,16 +49,12 @@ export class TaskService {
 
   tasks: TasksStateType = {}
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              public samuraiServiceTasks: SamuraiServiceTasks) {
   }
 
   fetchTasks(todolistID: string): Observable<ApiTaskType> {
-    return this.http.get<ApiTaskType>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistID}/tasks`, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    return this.samuraiServiceTasks.fetchTasks(todolistID)
   }
 
   setTasks(todolistId: string, tasks: ITask[]) {
@@ -76,12 +66,7 @@ export class TaskService {
   }
 
   addNewTask(title: string): Observable<ResponseType<{ item: ITask }>> {
-    return this.http.post<ResponseType<{ item: ITask }>>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${this.currentId}/tasks`, {title}, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    return this.samuraiServiceTasks.addNewTask(title, this.currentId)
   }
 
   addOne(task: ITask) {
@@ -89,12 +74,7 @@ export class TaskService {
   }
 
   deleteTask(todolistId: string, taskId: string): Observable<ResponseType> {
-    return this.http.delete<ResponseType<{ item: ITask }>>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}/tasks/${taskId}`, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    return this.samuraiServiceTasks.deleteTask(todolistId, taskId)
   }
 
   deleteOne(todolistId: string, taskId: string) {
@@ -112,12 +92,7 @@ export class TaskService {
       : mode
         ? model.status = TaskStatuses.Complited
         : model.status = TaskStatuses.New
-    return this.http.put<ResponseType<{ item: ITask }>>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistID}/tasks/${taskID}`, model, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    return this.samuraiServiceTasks.changeTask(todolistID, taskID, model as UpdateTaskType)
   }
 
   changeOne(todolistID: string, taskID: string | undefined, mode: string | boolean) {
