@@ -13,7 +13,7 @@ import {AppCreateTaskComponent} from "./components/add-task/app-create-task/app-
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TodolistFilterPipe} from "./shared/todolistfilter.pipe";
 import { EditTextComponent } from './components/edit-text/edit-text.component';
 import {HttpClientModule} from "@angular/common/http";
@@ -40,7 +40,8 @@ import {TitlePipe} from "./shared/title.pipe";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

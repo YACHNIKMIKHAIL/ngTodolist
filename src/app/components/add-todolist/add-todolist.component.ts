@@ -1,5 +1,6 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {TodolistService} from "../../services/todolist.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-add-todolist',
@@ -11,7 +12,13 @@ import {TodolistService} from "../../services/todolist.service";
 })
 export class AddTodolistComponent implements OnInit {
   allRights: string = 'Batman todolist. All rights reserved. 2022'
-  newTodolistTitle: string = ''
+  newTodolistTitle: string | null = ''
+
+  form = new FormGroup({
+    title: new FormControl<string>('', [
+      Validators.minLength(5)
+    ])
+  })
 
   constructor(public todolistService: TodolistService) {
   }
@@ -19,10 +26,16 @@ export class AddTodolistComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addTodolist() {
-    this.todolistService.addNewTodolist(this.newTodolistTitle)
+  get title() {
+    this.newTodolistTitle = this.form.controls.title.value
+    return this.form.controls.title as FormControl
+  }
+
+  submit(event:any) {
+    event.preventDefault()
+    if (this.form.controls.title.errors) return
+    if (this.newTodolistTitle) this.todolistService.addNewTodolist(this.newTodolistTitle)
       .subscribe(res => this.todolistService.addNew(res.data.item))
     this.newTodolistTitle = ''
   }
-
 }

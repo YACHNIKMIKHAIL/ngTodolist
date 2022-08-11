@@ -9,6 +9,28 @@
     width: 90%;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+
+
+    p {
+      font-size: .9rem;
+      color: rgba(253, 33, 235, 0.81);
+      text-align: center;
+      margin-right: 1rem;
+
+
+      background-color: rgba(0, 173, 171, 0.97);
+      background-image: linear-gradient(55deg, rgba(255, 255, 255, 0.61), rgba(253, 33, 235, 0.81));
+      background-size: 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+
+    form {
+      display: flex;
+
+    }
 
     input {
       background-color: #2d3a44;

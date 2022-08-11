@@ -1,9 +1,21 @@
+
+
 <div class="main">
   <div class="addCase">
-    <input type="text" placeholder="tap new todoname" [(ngModel)]="newTodolistTitle"
-           (keyup.enter)="addTodolist()"
-    >
-    <button (click)="addTodolist()">+</button>
+    <div class="err">
+    <p class="text-red-600 font-medium mb-2"
+       *ngIf="title.errors?.['minlength']"
+    >Please fill the field with 5 letter min.
+     Now : {{title.value.length}}
+    </p>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="submit($event)">
+      <input type="text" placeholder="tap new todoname"
+             (keyup.enter)="submit($event)"
+             formControlName="title"
+      >
+      <button (click)="submit($event)">+</button>
+    </form>
   </div>
   <div class="allRights">
     {{allRights}}
