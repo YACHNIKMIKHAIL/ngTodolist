@@ -2,35 +2,8 @@ import {Injectable} from '@angular/core';
 import {IFilter} from "../components/todolist/todolist.component";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {FielErrorType, SamuraiServiceTodolists} from "./samurai-service-log-auth.service";
+import {ITodolist, PostTodolistType, SamuraiServiceTodolists} from "./http/todolistsHttp.service";
 
-export interface ITodolist {
-  id: string
-  title: string
-  addedDate?: string
-  order?: number
-  filter?: IFilter
-}
-
-export type PostTodolistType = {
-  data: {
-    item: {
-      id: string,
-      title: string,
-      addedDate: string,
-      order: number
-    }
-  },
-  messages: [],
-  fieldsErrors: [],
-  resultCode: number
-}
-export type ResponseType<D = {}> = {
-  data: D
-  messages: string[]
-  fieldsErrors?: Array<FielErrorType>
-  resultCode: number
-}
 
 @Injectable({
   providedIn: 'root'
@@ -60,7 +33,7 @@ export class TodolistService {
     this.todolists.unshift(todolist)
   }
 
-  deleteTodolist(todolistId: string): Observable<ResponseType> {
+  deleteTodolist(todolistId: string) {
     this.todolists = this.todolists.filter(f => f.id !== todolistId)
     return this.samuraiServiceTodolists.deleteTodolist(todolistId)
   }
@@ -69,7 +42,7 @@ export class TodolistService {
     this.todolists = this.todolists.map(t => t.id === todolistId ? {...t, filter} : t)
   }
 
-  changeTodolistTitle(title: string, todolistId: string): Observable<ResponseType> {
+  changeTodolistTitle(title: string, todolistId: string) {
     return this.samuraiServiceTodolists.changeTodolistTitle(title, todolistId)
   }
 

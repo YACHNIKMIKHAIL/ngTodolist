@@ -1,44 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ResponseType} from "./todolist.service";
-import {SamuraiServiceTasks, UpdateTaskType} from "./samurai-service-log-auth.service";
+import {ApiTaskType, ITask, SamuraiServiceTasks, TaskStatuses, UpdateTaskType} from "./http/tasksHttp.service";
 
-export enum TaskStatuses {
-  New = 0,
-  InProgress = 1,
-  Complited = 2,
-  Draft = 3
-}
-
-export enum TaskPriorities {
-  Low = 0,
-  Middle = 1,
-  High = 2,
-  Urgently = 3,
-  Later = 4
-}
-
-export interface ITask {
-  id: string,
-  title: string,
-  description?: string,
-  todoListId: string,
-  order?: number,
-  status: TaskStatuses | boolean,
-  priority?: TaskPriorities,
-  startDate?: string,
-  deadline?: string,
-  addedDate?: string
-  loading?: boolean
-}
 
 export type TasksStateType = { [key: string]: ITask[] }
-export type ApiTaskType = {
-  items: Array<ITask>
-  totalCount: number
-  error: string | null
-}
+
 
 
 @Injectable({
@@ -49,7 +15,7 @@ export class TaskService {
 
   tasks: TasksStateType = {}
 
-  constructor(private http: HttpClient,
+  constructor(
               public samuraiServiceTasks: SamuraiServiceTasks) {
   }
 
@@ -65,7 +31,7 @@ export class TaskService {
     this.currentId = todolistId
   }
 
-  addNewTask(title: string): Observable<ResponseType<{ item: ITask }>> {
+  addNewTask(title: string) {
     return this.samuraiServiceTasks.addNewTask(title, this.currentId)
   }
 
@@ -73,7 +39,7 @@ export class TaskService {
     this.tasks[this.currentId].unshift(task)
   }
 
-  deleteTask(todolistId: string, taskId: string): Observable<ResponseType> {
+  deleteTask(todolistId: string, taskId: string){
     return this.samuraiServiceTasks.deleteTask(todolistId, taskId)
   }
 
@@ -85,7 +51,7 @@ export class TaskService {
     delete this.tasks[todolistId]
   }
 
-  changeTask(todolistID: string, taskID: string, mode: string | boolean): Observable<ResponseType<{ item: ITask }>> {
+  changeTask(todolistID: string, taskID: string, mode: string | boolean) {
     const model = this.tasks[todolistID].filter(t => t.id === taskID)[0]
     typeof mode === 'string'
       ? model.title = mode

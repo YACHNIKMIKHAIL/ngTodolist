@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {initialLoginType, SamuraiServiceLogAuth} from "./samurai-service-log-auth.service";
+import {initialLoginType, SamuraiServiceLogAuth} from "./http/logAuthHttp.service";
 
 @Injectable({
   providedIn: 'root'

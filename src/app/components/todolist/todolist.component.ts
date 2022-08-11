@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalService} from "../../services/modal.service";
-import {ITodolist, TodolistService} from "../../services/todolist.service";
+import { TodolistService} from "../../services/todolist.service";
 import {TaskService} from "../../services/task.service";
+import {ITodolist} from "../../services/http/todolistsHttp.service";
 
 export type IFilter = 'all' | 'completed' | 'active'
 
