@@ -2,7 +2,7 @@ import {IFilter} from "../../components/todolist/todolist.component";
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {FielErrorType} from "./logAuthHttp.service";
+import {baseUrl, FielErrorType, httpOptions} from "./logAuthHttp.service";
 
 export interface ITodolist {
   id: string
@@ -31,6 +31,7 @@ export type ResponseType<D = {}> = {
   fieldsErrors?: Array<FielErrorType>
   resultCode: number
 }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -39,38 +40,18 @@ export class SamuraiServiceTodolists {
   }
 
   fetchTodolists(): Observable<ITodolist[]> {
-    return this.http.get<ITodolist[]>(`https://social-network.samuraijs.com/api/1.1/todo-lists`, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    return this.http.get<ITodolist[]>(`${baseUrl}/todo-lists`, httpOptions)
   }
 
   addNewTodolist(title: string): Observable<PostTodolistType> {
-    return this.http.post<PostTodolistType>(`https://social-network.samuraijs.com/api/1.1/todo-lists`, {title}, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    return this.http.post<PostTodolistType>(`${baseUrl}/todo-lists`, {title}, httpOptions)
   }
 
   deleteTodolist(todolistId: string): Observable<ResponseType> {
-    return this.http.delete<ResponseType>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}`, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    return this.http.delete<ResponseType>(`${baseUrl}/todo-lists/${todolistId}`, httpOptions)
   }
 
   changeTodolistTitle(title: string, todolistId: string): Observable<ResponseType> {
-    return this.http.put<ResponseType>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}`, {title}, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    return this.http.put<ResponseType>(`${baseUrl}/todo-lists/${todolistId}`, {title}, httpOptions)
   }
 }

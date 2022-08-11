@@ -3,7 +3,13 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ResponseType} from "./todolistsHttp.service";
 
-
+export const baseUrl = 'https://social-network.samuraijs.com/api/1.1'
+export const httpOptions = {
+  withCredentials: true,
+  headers: {
+    "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
+  }
+}
 export type FielErrorType = { field: string, error: string }
 
 export type initialLoginType = {
@@ -26,21 +32,11 @@ export class SamuraiServiceLogAuth {
   }>> {
     return this.http.post<ResponseType<{
       userId?: number
-    }>>(`https://social-network.samuraijs.com/api/1.1/auth/login`, data, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    }>>(`${baseUrl}/auth/login`, data, httpOptions)
   }
 
   logOut(): Observable<ResponseType> {
-    return this.http.delete<ResponseType>(`https://social-network.samuraijs.com/api/1.1/auth/login`, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    return this.http.delete<ResponseType>(`${baseUrl}/auth/login`, httpOptions)
   }
 
   authMe(): Observable<ResponseType<{
@@ -52,11 +48,6 @@ export class SamuraiServiceLogAuth {
       id: number,
       login: string,
       email: string
-    }>>(`https://social-network.samuraijs.com/api/1.1/auth/me`, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    }>>(`${baseUrl}/auth/me`, httpOptions)
   }
 }

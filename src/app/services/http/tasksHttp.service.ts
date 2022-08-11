@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ResponseType} from "./todolistsHttp.service";
+import {baseUrl, httpOptions} from "./logAuthHttp.service";
 
 export type UpdateTaskType = {
   title: string
@@ -11,6 +12,7 @@ export type UpdateTaskType = {
   startDate: string
   deadline: string
 }
+
 export enum TaskStatuses {
   New = 0,
   InProgress = 1,
@@ -39,6 +41,7 @@ export interface ITask {
   addedDate?: string
   loading?: boolean
 }
+
 export type ApiTaskType = {
   items: Array<ITask>
   totalCount: number
@@ -53,38 +56,18 @@ export class SamuraiServiceTasks {
   }
 
   fetchTasks(todolistID: string): Observable<ApiTaskType> {
-    return this.http.get<ApiTaskType>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistID}/tasks`, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    return this.http.get<ApiTaskType>(`${baseUrl}/todo-lists/${todolistID}/tasks`, httpOptions)
   }
 
-  addNewTask(title: string,currentId:string): Observable<ResponseType<{ item: ITask }>> {
-    return this.http.post<ResponseType<{ item: ITask }>>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${currentId}/tasks`, {title}, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+  addNewTask(title: string, currentId: string): Observable<ResponseType<{ item: ITask }>> {
+    return this.http.post<ResponseType<{ item: ITask }>>(`${baseUrl}/todo-lists/${currentId}/tasks`, {title}, httpOptions)
   }
 
   deleteTask(todolistId: string, taskId: string): Observable<ResponseType> {
-    return this.http.delete<ResponseType<{ item: ITask }>>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}/tasks/${taskId}`, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    return this.http.delete<ResponseType<{ item: ITask }>>(`${baseUrl}/todo-lists/${todolistId}/tasks/${taskId}`, httpOptions)
   }
 
-  changeTask(todolistID: string, taskID: string, model:UpdateTaskType): Observable<ResponseType<{ item: ITask }>> {
-    return this.http.put<ResponseType<{ item: ITask }>>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistID}/tasks/${taskID}`, model, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+  changeTask(todolistID: string, taskID: string, model: UpdateTaskType): Observable<ResponseType<{ item: ITask }>> {
+    return this.http.put<ResponseType<{ item: ITask }>>(`${baseUrl}/todo-lists/${todolistID}/tasks/${taskID}`, model, httpOptions)
   }
 }
