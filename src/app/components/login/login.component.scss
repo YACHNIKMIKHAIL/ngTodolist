@@ -19,6 +19,20 @@
       text-align: center;
     }
   }
+  .re {
+    background-color: #fd21eb;
+    background-image: linear-gradient(85deg, rgb(0, 173, 171), rgba(253, 33, 235, 0.41));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    margin-bottom: 2rem;
+    font-size: .7rem;
+    p{
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+  }
 
   .login {
     display: flex;
@@ -29,6 +43,10 @@
     border-radius: 1rem;
     background-color: rgba(14, 0, 0, 0.35);
 
+    form{
+      display: flex;
+      flex-direction: column;
+    }
     .title {
       color: #00adab;
       margin-bottom: 1rem;

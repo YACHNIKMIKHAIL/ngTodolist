@@ -1,5 +1,6 @@
 <div class="main">
-  <div class="r">
+
+  <div class="r" >
     <p>To log in get registered
       <a href="https://social-network.samuraijs.com/" target="_blank">here</a>
     </p>
@@ -8,12 +9,26 @@
     <p>Password: free</p>
   </div>
 
+  <div class="re" *ngIf="eMail.errors || password.errors">
+    <p *ngIf="eMail.errors?.['minlength'] && eMail.touched || eMail.errors?.['email'] "
+    > Invalid eMail </p>
+    <p *ngIf=" eMail.touched && eMail.value.length===0 "
+    > Required password </p>
+    <p *ngIf="password.errors?.['minlength'] && password.touched "
+    >Invalid pass </p>
+    <p *ngIf=" password.touched && password.value.length===0 "
+    > Required eMail </p>
+  </div>
+
+
   <div class="login">
     <div class="title">
       {{title}}
     </div>
-    <input type="text" placeholder="eMail" [(ngModel)]="email">
-    <input type="password" placeholder="password" [(ngModel)]="pass">
-    <button (click)="this.logIn()">logIn</button>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <input type="text" placeholder="eMail" formControlName="email">
+      <input type="password" placeholder="password" formControlName="pass">
+      <button>logIn</button>
+    </form>
   </div>
 </div>
