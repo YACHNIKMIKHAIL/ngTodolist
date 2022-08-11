@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {initialLoginType, SamuraiService} from "./samurai.service";
+import {initialLoginType, SamuraiServiceLogAuth} from "./samurai-service-log-auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +14,11 @@ export class LoginService {
 
   constructor(public router: Router,
               private http: HttpClient,
-              private samuraiService: SamuraiService) {
+              private samuraiServiceLogAuth: SamuraiServiceLogAuth) {
   }
 
   logIn(data: initialLoginType) {
-    return this.samuraiService.logIn(data)
+    return this.samuraiServiceLogAuth.logIn(data)
   }
 
   isAuthFunc(v: boolean, login?: string) {
@@ -32,10 +32,10 @@ export class LoginService {
   logOut() {
     this.isAuth = false
     this.login = ''
-    return this.samuraiService.logOut()
+    return this.samuraiServiceLogAuth.logOut()
   }
 
   authMe() {
-    return this.samuraiService.authMe()
+    return this.samuraiServiceLogAuth.authMe()
   }
 }

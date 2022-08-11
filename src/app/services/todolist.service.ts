@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {IFilter} from "../components/todolist/todolist.component";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {FielErrorType} from "./samurai.service";
+import {FielErrorType, SamuraiServiceTodolists} from "./samurai-service-log-auth.service";
 
 export interface ITodolist {
   id: string
@@ -39,7 +39,9 @@ export class TodolistService {
   todolists: ITodolist[] = []
 
   constructor(
-    private http: HttpClient) {
+    private http: HttpClient,
+    private samuraiServiceTodolists: SamuraiServiceTodolists
+  ) {
   }
 
   setTodolists(todolists: ITodolist[]) {
@@ -47,21 +49,11 @@ export class TodolistService {
   }
 
   fetchTodolists(): Observable<ITodolist[]> {
-    return this.http.get<ITodolist[]>(`https://social-network.samuraijs.com/api/1.1/todo-lists`, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    return this.samuraiServiceTodolists.fetchTodolists()
   }
 
   addNewTodolist(title: string): Observable<PostTodolistType> {
-    return this.http.post<PostTodolistType>(`https://social-network.samuraijs.com/api/1.1/todo-lists`, {title}, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    return this.samuraiServiceTodolists.addNewTodolist(title)
   }
 
   addNew(todolist: ITodolist) {
@@ -70,12 +62,7 @@ export class TodolistService {
 
   deleteTodolist(todolistId: string): Observable<ResponseType> {
     this.todolists = this.todolists.filter(f => f.id !== todolistId)
-    return this.http.delete<ResponseType>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}`, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    return this.samuraiServiceTodolists.deleteTodolist(todolistId)
   }
 
   changeFilter(filter: IFilter, todolistId: string) {
@@ -83,12 +70,7 @@ export class TodolistService {
   }
 
   changeTodolistTitle(title: string, todolistId: string): Observable<ResponseType> {
-    return this.http.put<ResponseType>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}`, {title}, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "3054dc60-1df1-480c-a08f-6e543a8dcaf0"
-      }
-    })
+    return this.samuraiServiceTodolists.changeTodolistTitle(title, todolistId)
   }
 
   changeOne(title: string, todolistId: string) {
