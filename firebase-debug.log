@@ -5,9 +5,40 @@
 [debug] [2022-08-11T12:40:41.507Z] Node Version:  v18.6.0
 [debug] [2022-08-11T12:40:41.508Z] Time:          Thu Aug 11 2022 14:40:41 GMT+0200 (Central European Summer Time)
 [debug] [2022-08-11T12:40:41.508Z] ----------------------------------------------------------------------
-[debug] 
+[debug]
 [debug] [2022-08-11T12:40:41.511Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
 [debug] [2022-08-11T12:40:41.511Z] > authorizing via signed-in user (limerick2011@yandex.ru)
+[info]
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/mihailacnik/WebstormProjects/NG-todolist
+
+[info]
+=== Project Setup
+[info]
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add,
+[info] but for now we'll just set up a default project.
+[info]
+[debug] [2022-08-11T12:41:36.789Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2022-08-11T12:41:37.337Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2022-08-11T12:41:37.337Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2022-08-11T12:42:28.632Z] ----------------------------------------------------------------------
+[debug] [2022-08-11T12:42:28.633Z] Command:       /Users/mihailacnik/.nvm/versions/node/v18.6.0/bin/node /Users/mihailacnik/.nvm/versions/node/v18.6.0/bin/firebase init hosting
+[debug] [2022-08-11T12:42:28.633Z] CLI Version:   11.4.1
+[debug] [2022-08-11T12:42:28.633Z] Platform:      darwin
+[debug] [2022-08-11T12:42:28.633Z] Node Version:  v18.6.0
+[debug] [2022-08-11T12:42:28.634Z] Time:          Thu Aug 11 2022 14:42:28 GMT+0200 (Central European Summer Time)
+[debug] [2022-08-11T12:42:28.634Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-08-11T12:42:28.637Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-08-11T12:42:28.637Z] > authorizing via signed-in user (limerick2011@yandex.ru)
 [info] 
      ######## #### ########  ######## ########     ###     ######  ########
      ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
@@ -26,3 +57,6 @@ You're about to initialize a Firebase project in this directory:
 [info] You can create multiple project aliases by running firebase use --add, 
 [info] but for now we'll just set up a default project.
 [info] 
+[debug] [2022-08-11T12:42:30.935Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2022-08-11T12:42:31.564Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2022-08-11T12:42:31.564Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
