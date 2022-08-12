@@ -1,6 +1,6 @@
-<div class="app" *ngIf="!isLoading; else load">
+<div class="app" *ngIf="!appService.isLoading; else load">
   <app-header></app-header>
-  <router-outlet *ngIf="isInitialized"></router-outlet>
+  <router-outlet *ngIf="appService.isInitialized"></router-outlet>
   <app-add-task title="Add new task." *ngIf="modalService.isVisible$|async">
     <app-app-create-task></app-app-create-task>
   </app-add-task>
