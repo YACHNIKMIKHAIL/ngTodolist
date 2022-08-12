@@ -39,13 +39,11 @@ export class AddTodolistComponent implements OnInit {
     if (this.form.controls.title.errors) return
     if (this.newTodolistTitle) {
       this.appService.setIsLoad(true)
-      console.log('submit start', this.appService.isLoading)
       this.todolistService.addNewTodolist(this.newTodolistTitle)
         .subscribe(res => {
           this.todolistService.addNew(res.data.item)
           this.form.reset()
           this.appService.setIsLoad(false)
-          console.log('submit end', this.appService.isLoading)
         })
     }
 

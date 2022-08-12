@@ -10,7 +10,7 @@ import {Injectable} from "@angular/core";
 export class AppService {
   router: Router = {} as Router
   isInitialized: boolean = false
-  isLoading: boolean = false
+  isLoading: boolean = true
 
   constructor(public loginService: LoginService,
               router: Router) {

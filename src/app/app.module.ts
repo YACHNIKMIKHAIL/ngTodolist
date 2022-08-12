@@ -18,7 +18,9 @@ import {TodolistFilterPipe} from "./shared/todolistfilter.pipe";
 import { EditTextComponent } from './components/edit-text/edit-text.component';
 import {HttpClientModule} from "@angular/common/http";
 import {TitlePipe} from "./shared/title.pipe";
-import { LoaderComponent } from './components/loader/loader.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {LoaderComponent} from "./components/loader/loader.component";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { LoaderComponent } from './components/loader/loader.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

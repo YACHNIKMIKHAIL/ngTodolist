@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ModalService} from "../../services/modal.service";
 import {TodolistService} from "../../services/todolist.service";
 import {TaskService} from "../../services/task.service";
-import {ITodolist} from "../../services/http/todolistsHttp.service";
 import {AppService} from "../../services/app.service";
 
 export type IFilter = 'all' | 'completed' | 'active'
@@ -13,7 +12,6 @@ export type IFilter = 'all' | 'completed' | 'active'
   styleUrls: ['./todolist.component.scss']
 })
 export class TodolistComponent implements OnInit {
-  todolists: ITodolist[] = []
 
   constructor(public modalService: ModalService,
               public todolistService: TodolistService,

@@ -12,10 +12,8 @@ import {AppService} from "../../services/app.service";
 export class MainComponent implements OnInit {
 
   constructor(public appService:AppService) {
-    console.log('MainComponentSay')
   }
 
   ngOnInit(): void {
-    console.log('MainComponent',this.appService.isLoading)
   }
 }
