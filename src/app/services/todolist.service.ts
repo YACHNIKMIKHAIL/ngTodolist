@@ -15,7 +15,7 @@ export class TodolistService {
   constructor(
     private http: HttpClient,
     private samuraiServiceTodolists: SamuraiServiceTodolists,
-    private appService: AppService
+    public appService: AppService
   ) {
   }
 
