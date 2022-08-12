@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {TaskService} from "../../services/task.service";
 import {TodolistService} from "../../services/todolist.service";
 import {IFilter} from "../todolist/todolist.component";
+import {AppService} from "../../services/app.service";
 
 
 @Component({
@@ -15,6 +16,7 @@ export class TaskComponent implements OnInit {
   @Input() currentFilter: IFilter | undefined = 'all'
 
   constructor(public taskService: TaskService,
+              private appService: AppService,
               public todolistService: TodolistService) {
   }
 
@@ -27,15 +29,19 @@ export class TaskComponent implements OnInit {
   }
 
   deleteTask(taskId: string) {
+    this.appService.setIsLoad(true)
     this.taskService.deleteTask(this.todolistId, taskId).subscribe(res => {
       res.messages.length === 0 && this.taskService.deleteOne(this.todolistId, taskId)
+      this.appService.setIsLoad(false)
     })
   }
 
   changeStatus(taskId: string, todolistId: string, event: any) {
+    this.appService.setIsLoad(true)
     this.taskService.changeTask(todolistId, taskId, event.target.checked)
       .subscribe(res => {
         res.messages.length === 0 && this.taskService.changeOne(todolistId, taskId, event.target.checked)
+        this.appService.setIsLoad(false)
       })
   }
 }

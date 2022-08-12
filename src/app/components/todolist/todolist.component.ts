@@ -3,6 +3,7 @@ import {ModalService} from "../../services/modal.service";
 import {TodolistService} from "../../services/todolist.service";
 import {TaskService} from "../../services/task.service";
 import {ITodolist} from "../../services/http/todolistsHttp.service";
+import {AppService} from "../../services/app.service";
 
 export type IFilter = 'all' | 'completed' | 'active'
 
@@ -16,6 +17,7 @@ export class TodolistComponent implements OnInit {
 
   constructor(public modalService: ModalService,
               public todolistService: TodolistService,
+              private appService: AppService,
               public taskService: TaskService) {
   }
 
@@ -31,8 +33,10 @@ export class TodolistComponent implements OnInit {
   }
 
   deleteTodolist(todolistId: string) {
+    this.appService.setIsLoad(true)
     this.todolistService.deleteTodolist(todolistId).subscribe(res => {
       res.messages.length === 0 && this.taskService.deleteTodolist(todolistId)
+      this.appService.setIsLoad(false)
     })
 
   }

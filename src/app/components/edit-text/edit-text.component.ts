@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {TodolistService} from "../../services/todolist.service";
 import {TaskService} from "../../services/task.service";
 import {ITask} from "../../services/http/tasksHttp.service";
+import {AppService} from "../../services/app.service";
 
 @Component({
   selector: 'app-edit-text',
@@ -22,6 +23,7 @@ export class EditTextComponent implements OnInit {
 
 
   constructor(private todolistService: TodolistService,
+              private appService: AppService,
               private taskService: TaskService) {
   }
 
@@ -34,15 +36,19 @@ export class EditTextComponent implements OnInit {
   }
 
   close() {
+    this.appService.setIsLoad(true)
+
     this.isVisible = false
     if (this.isTodolist) this.todolistService.changeTodolistTitle(this.textX, this.todolistId)
       .subscribe(res => {
         res.messages.length === 0 && this.todolistService.changeOne(this.textX, this.todolistId)
+        this.appService.setIsLoad(false)
       })
 
     if (this.taskId) this.taskService.changeTask(this.todolistId, this.taskId, this.textX)
       .subscribe(res => {
         res.messages.length === 0 && this.taskService.changeOne(this.todolistId, this.taskId, this.textX)
+        this.appService.setIsLoad(false)
       })
   }
 
