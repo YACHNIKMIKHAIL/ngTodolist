@@ -1,6 +1,7 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {LoginService} from "../../services/login.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ResponseType} from "../../services/http/todolistsHttp.service";
 
 @Component({
   selector: 'app-login',
@@ -52,7 +53,9 @@ export class LoginComponent implements OnInit {
       email: this.form.value.email as string,
       password: this.form.value.pass as string,
       rememberMe: true
-    }).subscribe(res => {
+    }).subscribe((res:ResponseType<{
+      userId?: number
+    }>) => {
       !!res.data.userId && this.loginService.isAuthFunc(true, res.data.userId.toString())
     })
   }

@@ -1,6 +1,7 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {TodolistService} from "../../services/todolist.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AppService} from "../../services/app.service";
 
 @Component({
   selector: 'app-add-todolist',
@@ -20,7 +21,8 @@ export class AddTodolistComponent implements OnInit {
     ])
   })
 
-  constructor(public todolistService: TodolistService) {
+  constructor(public todolistService: TodolistService,
+              private appService: AppService) {
   }
 
   ngOnInit(): void {
@@ -31,11 +33,13 @@ export class AddTodolistComponent implements OnInit {
     return this.form.controls.title as FormControl
   }
 
-  submit(event:any) {
+  submit(event: any) {
     event.preventDefault()
+    this.appService.setIsLoading(true)
     if (this.form.controls.title.errors) return
     if (this.newTodolistTitle) this.todolistService.addNewTodolist(this.newTodolistTitle)
       .subscribe(res => this.todolistService.addNew(res.data.item))
     this.newTodolistTitle = ''
+    this.appService.setIsLoading(false)
   }
 }
