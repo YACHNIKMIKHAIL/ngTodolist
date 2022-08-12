@@ -8,10 +8,6 @@ import {AppService} from "./app.service";
   providedIn: 'root'
 })
 export class LoginService {
-  email: string = '123'
-  pass: string = '123'
-  login: string = ''
-  isAuth: boolean = false
 
   constructor(public router: Router,
               private http: HttpClient,
@@ -23,17 +19,9 @@ export class LoginService {
     return this.samuraiServiceLogAuth.logIn(data)
   }
 
-  isAuthFunc(v: boolean, login?: string) {
-    this.isAuth = v
-    if (login) this.login = login
-    v
-      ? this.router.navigate(['/'])
-      : this.router.navigate(['/login'])
-  }
-
   logOut() {
-    this.isAuth = false
-    this.login = ''
+    this.appService.isAuth = false
+    this.appService.login = ''
     return this.samuraiServiceLogAuth.logOut()
   }
 

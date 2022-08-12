@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from "../../services/login.service";
 import {ResponseType} from "../../services/http/todolistsHttp.service";
+import {AppService} from "../../services/app.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -10,7 +12,9 @@ import {ResponseType} from "../../services/http/todolistsHttp.service";
 export class HeaderComponent implements OnInit {
   title: string = `NG batman -`
 
-  constructor(public loginService: LoginService) {
+  constructor(public appService: AppService,
+              private router:Router,
+              public loginService: LoginService,) {
 
   }
 
@@ -18,8 +22,11 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
-    this.loginService.logOut().subscribe((res:ResponseType) => {
-      res.messages.length === 0 && this.loginService.isAuthFunc(false)
+    this.loginService.logOut().subscribe((res: ResponseType) => {
+      if (res.messages.length === 0) {
+        this.appService.isAuth = false
+        this.router.navigate(['/login'])
+      }
     })
   }
 }
