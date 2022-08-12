@@ -35,6 +35,7 @@ export class AddTodolistComponent implements OnInit {
 
   submit(event: any) {
     event.preventDefault()
+    this.appService.setIsLoading(true)
     if (this.form.controls.title.errors) return
     if (this.newTodolistTitle) {
       this.appService.setIsLoad(true)

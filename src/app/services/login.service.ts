@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {initialLoginType, SamuraiServiceLogAuth} from "./http/logAuthHttp.service";
+import {AppService} from "./app.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class LoginService {
 
   constructor(public router: Router,
               private http: HttpClient,
+              private appService: AppService,
               private samuraiServiceLogAuth: SamuraiServiceLogAuth) {
   }
 
