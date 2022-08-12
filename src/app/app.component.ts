@@ -16,18 +16,10 @@ export class AppComponent implements OnInit {
   constructor(public modalService: ModalService,
               public appService: AppService,
               ) {
-    // this.router = router
   }
 
   ngOnInit(): void {
     this.appService.initialezeHandler()
-    // this.loginService.authMe().subscribe(res => {
-    //   this.isInitialized = true
-    //   this.isLoading = false
-    //   res.messages.length === 0
-    //     ? this.loginService.isAuthFunc(true, res.data.login)
-    //     : this.loginService.isAuthFunc(false)
-    // })
   }
 
 }
