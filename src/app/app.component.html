@@ -1,7 +1,15 @@
-<div class="app">
+<div class="app" *ngIf="!isLoading; else load">
   <app-header></app-header>
   <router-outlet *ngIf="isInitialized"></router-outlet>
   <app-add-task title="Add new task." *ngIf="modalService.isVisible$|async">
     <app-app-create-task></app-app-create-task>
   </app-add-task>
 </div>
+
+<ng-template #load>
+  <div class="app">
+    <div class="loaderCase">
+      <app-loader></app-loader>
+    </div>
+  </div>
+</ng-template>

@@ -18,6 +18,7 @@ import {TodolistFilterPipe} from "./shared/todolistfilter.pipe";
 import { EditTextComponent } from './components/edit-text/edit-text.component';
 import {HttpClientModule} from "@angular/common/http";
 import {TitlePipe} from "./shared/title.pipe";
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {TitlePipe} from "./shared/title.pipe";
     MainComponent,
     NotFoundComponent,
     EditTextComponent,
-    TitlePipe
+    TitlePipe,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
