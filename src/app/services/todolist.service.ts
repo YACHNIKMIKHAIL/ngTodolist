@@ -3,6 +3,7 @@ import {IFilter} from "../components/todolist/todolist.component";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {ITodolist, PostTodolistType, SamuraiServiceTodolists} from "./http/todolistsHttp.service";
+import {AppService} from "./app.service";
 
 
 @Injectable({
@@ -13,7 +14,8 @@ export class TodolistService {
 
   constructor(
     private http: HttpClient,
-    private samuraiServiceTodolists: SamuraiServiceTodolists
+    private samuraiServiceTodolists: SamuraiServiceTodolists,
+    private appService: AppService
   ) {
   }
 
@@ -26,6 +28,7 @@ export class TodolistService {
   }
 
   addNewTodolist(title: string): Observable<PostTodolistType> {
+    this.appService.setIsLoad(true)
     return this.samuraiServiceTodolists.addNewTodolist(title)
   }
 

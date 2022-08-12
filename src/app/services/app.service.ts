@@ -20,7 +20,7 @@ export class AppService {
   initialezeHandler() {
     this.loginService.authMe().subscribe(res => {
       this.isInitialized = true
-      this.isLoading = false
+      // this.isLoading = false
       res.messages.length === 0
         ? this.loginService.isAuthFunc(true, res.data.login)
         : this.loginService.isAuthFunc(false)

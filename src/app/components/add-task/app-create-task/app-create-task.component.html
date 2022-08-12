@@ -1,4 +1,4 @@
 <div class="add">
-  <input type="text" placeholder="Tap task name ..." [(ngModel)]="newTaskTitle" (keyup.enter)="addTask()">
+  <input type="text" placeholder="Tap task name ..." [(ngModel)]="newTaskTitle" (keyup.enter)="addTask()" appFocus>
   <button (click)="addTask()">Add</button>
 </div>

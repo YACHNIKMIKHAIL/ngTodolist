@@ -1,2 +1,6 @@
-<app-todolist></app-todolist>
+<app-todolist *ngIf="!appService.isLoading;else isLoad"></app-todolist>
 <app-add-todolist></app-add-todolist>
+
+<ng-template #isLoad>
+  <app-loader></app-loader>
+</ng-template>

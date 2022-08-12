@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalService} from "../../services/modal.service";
-import { TodolistService} from "../../services/todolist.service";
+import {TodolistService} from "../../services/todolist.service";
 import {TaskService} from "../../services/task.service";
 import {ITodolist} from "../../services/http/todolistsHttp.service";
 
