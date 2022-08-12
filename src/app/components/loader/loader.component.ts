@@ -1,7 +1,7 @@
 import {transition, trigger, useAnimation} from '@angular/animations';
 import {Component, OnInit} from '@angular/core';
 import {AppService} from "../../services/app.service";
-import {bounce, flash} from "ng-animate";
+import {flash} from "ng-animate";
 
 
 @Component({

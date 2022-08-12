@@ -9,7 +9,19 @@
     color: rgba(253, 33, 235, 0.48);
   }
 
+  .blink_me {
+    //animation: blinker 1s linear infinite;
+    animation: blinker 1s alternate infinite;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+
 }
+
 
 
 
