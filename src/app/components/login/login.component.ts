@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     ]),
     pass: new FormControl<string>('', [
       Validators.required,
-      Validators.minLength(5)
+      Validators.minLength(3)
     ])
   })
 
